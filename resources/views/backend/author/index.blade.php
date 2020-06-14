@@ -2,12 +2,12 @@
 @section('content')
 <!-- Breadcubs Area Start Here -->
 <div class="breadcrumbs-area">
-    {{-- <h3>Users</h3> --}}
+    {{-- <h3>Authors</h3> --}}
     <ul>
         <li>
             <a href="{{route('dashboard')}}">Home</a>
         </li>
-        <li>All Users</li>
+        <li>All Author</li>
     </ul>
 </div>
 <!-- Breadcubs Area End Here -->
@@ -16,10 +16,10 @@
     <div class="card-body">
         <div class="heading-layout1">
             <div class="item-title">
-                <h3>All Users Data</h3>
+                <h3>All Authors</h3>
             </div>
             <div class="pull-right">
-                <a href="{{route('user.create')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel"> Add User</button></a>
+                <a href="{{route('author.create')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel"> Add New</button></a>
             </div>
         </div>
         <hr><hr>
@@ -33,18 +33,14 @@
                                 <label class="form-check-label">Sl No</label>
                             </div>
                         </th>
-                        <th>Photo</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Level</th>
-                        <th>Address</th>
+                        <th>Author Name</th>
+                        <th>Comments</th>
                         <th>Activation Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $key => $item)
+                    @foreach ($authors as $key => $item)
                     <tr>
                         <td>
                             <div class="form-check">
@@ -52,29 +48,18 @@
                                 <label class="form-check-label">{{$key+1}}</label>
                             </div>
                         </td>
-                        <td class="text-center">
-                            @if ($item->image)
-                                <img src="{{asset($item->image)}}" alt="Avatar" style="height: 35px; width: 35px; border-radius:50px;">
-                            @else
-                                <img src="{{asset('public/assets/backend')}}/img/figure/student2.png" alt="student">
-                            @endif
-                        </td>
                         <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>{{$item->phone}}</td>
-                        <td>{{$item->usertype}}</td>
-                        <td>{{$item->address}}</td>
+                        <td>{{$item->coments}}</td>
                         <td>
                             @if (1==$item->activation_status)
                                 <span class="badge badge-pill badge-success">Active</span>
                             @elseif(0==$item->activation_status)
-                                <span class="badge badge-pill badge-danger">Inactive</span>
+                                <span class="badge badge-pill badge-warning">Inactive</span>
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('user.show',$item->id)}}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                            <a href="{{route('user.edit',$item->id)}}" class="btn btn-info"><i class="fas fa-cogs"></i></a>
-                            <a href="{{route('user.destroy',$item->id)}}" id="delete"class="btn btn-danger" onclick="return check_delete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a href="{{route('author.edit',$item->id)}}" class="btn btn-info" title="Edit"><i class="fas fa-cogs"></i></a>
+                            <a href="{{route('author.destroy',$item->id)}}" id="delete"class="btn btn-danger" onclick="return check_delete();"title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     @endforeach

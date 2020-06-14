@@ -11,7 +11,7 @@
         <ul class="nav nav-sidebar-menu sidebar-toggle-view">
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
-                <ul class="nav sub-group-menu">
+                <ul class="nav sub-group-menu {{($prefix=='/dashboard')?'sub-group-active':''}} ">
                     <li class="nav-item">
                         <a href="{{route('dashboard')}}" class="nav-link {{($route=='dashboard')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Admin</a>
                     </li>
@@ -27,7 +27,84 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Users</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Cariculam</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/cariculam')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('cariculam.index')}}" class="nav-link {{($route=='cariculam.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Cariculam</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('cariculam.create')}}" class="nav-link {{($route=='cariculam.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Cariculam</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Department</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/department')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('department.index')}}" class="nav-link {{($route=='department.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All department</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('department.create')}}" class="nav-link {{($route=='department.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Department</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Semester</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/semester')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('semester.index')}}" class="nav-link {{($route=='semester.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All semester</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('semester.create')}}" class="nav-link {{($route=='semester.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Semester</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Session</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/session')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('session.index')}}" class="nav-link {{($route=='session.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All session</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('session.create')}}" class="nav-link {{($route=='session.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Session</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Author</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/author')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('author.index')}}" class="nav-link {{($route=='author.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All author</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('author.create')}}" class="nav-link {{($route=='author.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New author</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Publication</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/publication')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('publication.index')}}" class="nav-link {{($route=='publication.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Publication</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('publication.create')}}" class="nav-link {{($route=='publication.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Publication</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Library</span></a>
+                <ul class="nav sub-group-menu {{($prefix=='/book')?'sub-group-active':''}}">
+                    <li class="nav-item">
+                        <a href="{{route('book.index')}}" class="nav-link {{($route=='book.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('book.create')}}" class="nav-link {{($route=='book.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Book</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Users Management</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/user')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('user.index')}}" class="nav-link {{($route=='user.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All User</a>
@@ -96,19 +173,6 @@
                     <li class="nav-item">
                         <a href="add-parents.html" class="nav-link"><i class="fas fa-angle-right"></i>Add
                             Parent</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Library</span></a>
-                <ul class="nav sub-group-menu">
-                    <li class="nav-item">
-                        <a href="all-book.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                            Book</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="add-book.html" class="nav-link"><i class="fas fa-angle-right"></i>Add New
-                            Book</a>
                     </li>
                 </ul>
             </li>

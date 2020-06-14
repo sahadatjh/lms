@@ -46,7 +46,11 @@
                         <span>User Level: {{ Auth::user()->usertype }}</span>
                     </div>
                     <div class="admin-img">
-                        <img src="{{asset('public/assets/backend')}}/img/figure/admin.jpg" alt="Admin">
+                        @if (Auth::user()->image)
+                            <img src="{{asset(Auth::user()->image)}}" alt="Admin" style="height: 45px; width: 45px;">
+                        @else
+                            <img src="{{asset('public/assets/backend')}}/img/figure/admin.jpg" alt="Admin">
+                        @endif
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
