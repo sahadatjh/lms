@@ -7,7 +7,7 @@
         <li>
             <a href="{{route('dashboard')}}">Home</a>
         </li>
-        <li>Edit User</li>
+        <li>Edit Book</li>
     </ul>
 </div>
 <!-- Breadcubs Area End Here -->
@@ -18,14 +18,14 @@
             <div class="card-body">
                 <div class="heading-layout1">
                     <div class="item-title">
-                        <h3>Update User Information</h3>
+                        <h3>Update Books Information</h3>
                     </div>
                     <div class="pull-right">
-                        <a href="{{route('user.index')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel">All User</button></a>
+                        <a href="{{route('book.index')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel">All Books</button></a>
                     </div>
                 </div>
                 <hr><hr>
-                <form method="POST" action="{{ route('user.update',$user->id) }}" enctype="multipart/form-data" class="new-added-form">
+                <form method="POST" action="{{ route('book.update',$book->id) }}" class="new-added-form">
                     @csrf
                     @if ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -34,117 +34,111 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     @endif
                     <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="name">Your Name *</label>
-                            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror"  value="{{ $user->name }}"   autofocus>
-                            <input type="hidden" name="id" value="{{ $user->id }}">
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label for="name">Book Name *</label>
+                            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror"  value="{{ $book->name }}" autofocus>
+                        </div> 
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label for="author_id">Author *</label>
+                            <select name="author_id" id="author_id" class="select2 @error('author_id') is-invalid @enderror">
+                                <option value="">Please Select*</option>
+                                @foreach ($authors as $item)
+                                    <option value="{{$item->id}}" {{($item->id==$book->author_id)?'selected':''}}>{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="email">Your Email *</label>
-                            <input id="email" type="email"  name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $user->email }}">
-                      </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="text" id="phone" name="phone" value="{{ $user->phone }}" class="form-control  @error('phone') is-invalid @enderror">
-                            
-                            @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label for="publication_id">Publication*</label>
+                            <select name="publication_id" id="publication_id" class="select2 @error('publication_id') is-invalid @enderror">
+                                <option value="">Please Select*</option>
+                                @foreach ($publications as $item)
+                                    <option value="{{$item->id}}" {{($item->id==$book->publication_id)?'selected':''}}>{{$item->publication_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label for="cariculam_id">Cariculam*</label>
+                            <select name="cariculam_id" id="cariculam_id" class="select2 @error('cariculam_id') is-invalid @enderror">
+                                <option value="">Please Select*</option>
+                                @foreach ($cariculams as $item)
+                                    <option value="{{$item->id}}" {{($item->id==$book->cariculam_id)?'selected':''}}>{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label for="department_id">Department*</label>
+                            <select name="department_id" id="department_id" class="select2 @error('department_id') is-invalid @enderror">
+                                <option value="">Please Select*</option>
+                                @foreach ($departments as $item)
+                                    <option value="{{$item->id}}" {{($item->id==$book->department_id)?'selected':''}}>{{$item->department_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label for="semester_id">Semester *</label>
+                            <select name="semester_id" id="semester_id" class="select2 @error('semester_id') is-invalid @enderror">
+                                <option value="">Please Select*</option>
+                                @foreach ($semesters as $item)
+                                    <option value="{{$item->id}}" {{($item->id==$book->semester_id)?'selected':''}}>{{$item->semester_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="code">Subject code *</label>
+                            <input type="number" id="code" name="code"  value="{{$book->code}}" class="form-control  @error('code') is-invalid @enderror">
                         </div>                               
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="nid">National ID *</label>
-                            <input type="text" id="nid" name="nid"  value="{{ $user->nid }}" class="form-control  @error('nid') is-invalid @enderror">
-                            
-                            @error('nid')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="probidhan">Probidhan </label>
+                            <input type="number" id="probidhan" name="probidhan" value="{{$book->probidhan}}" class="form-control  @error('probidhan') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="theory">Theory </label>
+                            <input type="number" id="theory" name="theory"  value="{{$book->theory}}" class="form-control  @error('theory') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="practical">Practical </label>
+                            <input type="number" id="practical" name="practical"  value="{{$book->practical}}" class="form-control  @error('practical') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="credit">Credit </label>
+                            <input type="number" id="credit" name="credit"  value="{{$book->credit}}" class="form-control  @error('credit') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="tc">TC </label>
+                            <input type="number" id="tc" name="tc" value="{{$book->tc}}" class="form-control  @error('tc') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="tf">TF </label>
+                            <input type="number" id="tf" name="tf"  value="{{$book->tf}}" class="form-control  @error('tf') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="pc">PC </label>
+                            <input type="number" id="pc" name="pc" value="{{$book->pc}}" class="form-control  @error('pc') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="pf">PF </label>
+                            <input type="number" id="pf" name="pf" value="{{$book->pf}}" class="form-control  @error('pf') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="printed_price">Printed price </label>
+                            <input type="number" id="printed_price" name="printed_price"  value="{{$book->printed_price}}" class="form-control  @error('printed_price') is-invalid @enderror">
+                        </div>                               
+                        <div class="col-xl-2 col-lg-6 col-12 form-group">
+                            <label for="purchase_price">Purchase price </label>
+                            <input type="number" id="purchase_price" name="purchase_price" value="{{$book->purchase_price}}" class="form-control  @error('purchase_price') is-invalid @enderror">
                         </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="usertype">User Type *</label>
-                            <select name="usertype" id="usertype" class="select2 @error('usertype') is-invalid @enderror">
-                                <option value="">Please Select*</option>
-                                <option value="1" {{(1==$user->usertype)?'selected':''}}>Super Admin</option>
-                                <option value="2" {{(2==$user->usertype)?'selected':''}}>Admin</option>
-                                <option value="3" {{(3==$user->usertype)?'selected':''}}>User</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="gender">Gender *</label>
-                            <select name="gender" id="gender" class="select2 @error('gender') is-invalid @enderror">
-                                <option value="">Please Select Gender *</option>
-                                <option value="Male" {{('Male'==$user->gender)?'selected':''}}>Male</option>
-                                <option value="Female" {{('Female'==$user->gender)?'selected':''}}>Female</option>
-                                <option value="Others" {{('Others'==$user->gender)?'selected':''}}>Others</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="designation">Designation *</label>
-                            <select name="designation" id="designation" class="select2 @error('joining_date') is-invalid @enderror">
-                                <option value="">Please Select*</option>
-                                <option value="1" {{(1==$user->designation_id)?'selected':''}}>Principal</option>
-                                <option value="2" {{(2==$user->designation_id)?'selected':''}}>Accountant</option>
-                                <option value="3" {{(3==$user->designation_id)?'selected':''}}>Instructor</option>
-                                <option value="4" {{(4==$user->designation_id)?'selected':''}}>Jr. Instructor</option>
-                                <option value="5" {{(5==$user->designation_id)?'selected':''}}>Librarian</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="religion">Religion *</label>
-                            <select name="religion" id="religion" class="select2  @error('religion') is-invalid @enderror">
-                                <option value="">Please Select *</option>
-                                <option value="Islam" {{('Islam'==$user->religion)?'selected':''}}>Islam</option>
-                                <option value="Christian" {{('Christian'==$user->religion)?'selected':''}}>Christian</option>
-                                <option value="Hindu" {{('Hindu'==$user->religion)?'selected':''}}>Hindu</option>
-                                <option value="Buddhish" {{('Buddhish'==$user->religion)?'selected':''}}>Buddhish</option>
-                                <option value="Others" {{('Others'==$user->religion)?'selected':''}}>Others</option>
-                            </select>
-                            @error('religion')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="joining_date">Joining Data *</label>
-                            <input type="text" name="joining_date" id="joining_date" value="{{$user->joining_date}}" class="form-control air-datepicker  @error('joining_date') is-invalid @enderror "
-                                data-position='bottom right'>
-                            <i class="far fa-calendar-alt"></i>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label for="dob">Date Of Birth *</label>
-                            <input type="text" name="dob" id="dob" value="{{$user->dob}}" class="form-control air-datepicker @error('dob') is-invalid @enderror " data-position='bottom right'>
-                            <i class="far fa-calendar-alt"></i>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
                             <label for="activation_status">Activation Status *</label>
                             <select name="activation_status" id="activation_status" class="select2  @error('activation_status') is-invalid @enderror">
                                 <option value="">Please Select *</option>
-                                <option value="1" {{(1==$user->activation_status)?'selected':''}}>Active</option>
-                                <option value="0" {{(0==$user->activation_status)?'selected':''}}>Inactive</option>
+                                <option value="1" {{(1==$book->activation_status)?'selected':''}}>Active</option>
+                                <option value="0" {{(1==$book->activation_status)?'selected':''}}>Inactive</option>
                             </select>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 form-group">
-                            <label for="address">Adress *</label>
-                            <textarea id="address" name="address" class="textarea form-control @error('address') is-invalid @enderror" cols="10" rows="4">{{$user->address}}</textarea>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 form-group mg-t-30">
-                            <label class="text-dark-medium">Upload Photo(20-100KB)</label>
-                            <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror" id="imgInp">
-                        </div>
-                        <div class="col-xl-3 col-lg-6 form-group mg-t-30"> 
-                            <img src="{{asset($user->image)}}" alt="No Old Image" style="height: 150px; margin: 10px;padding:3px; border: 1px solid #000" /> <br> Old Image
-                            <input type="hidden" name="oldphoto" value="{{$user->image}}">
-                        </div>
-                        <div class="col-xl-3 col-lg-6 form-group mg-t-30">
-                            <img id="blah" src="#" alt="your image" style="height: 150px; margin: 10px;padding:3px; border: 1px solid #000" /><br> New Image
                         </div>
                         <div class="col-12 form-group mg-t-8">
                             <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Department;
+use App\Model\Cariculam;
 
 class DepartmentController extends Controller
 {
@@ -25,8 +26,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $department=Department::all();
-        return view('backend.department.index',['departments'=>$department]);
+        $data=array();
+        $data['cariculams']=Cariculam::all();
+        $data['departments']=Department::all();
+        return view('backend.department.index',$data);
     }
 
     /**
@@ -36,7 +39,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('backend.department.create');
+        $cariculam=Cariculam::where('activation_status',1)->get();
+        return view('backend.department.create',['cariculams'=>$cariculam]);
     }
 
     /**
@@ -87,8 +91,10 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $department=Department::find($id);
-        return view('backend.department.edit',['department'=>$department]);
+        $data=array();
+        $data['cariculams']=Cariculam::where('activation_status',1)->get();
+        $data['department']=Department::find($id);
+        return view('backend.department.edit',$data);
     }
 
     /**

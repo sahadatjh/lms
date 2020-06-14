@@ -49,7 +49,7 @@
                                 <label class="form-check-label">{{$key+1}}</label>
                             </div>
                         </td>
-                        <td>Diplomar-in-Engineering</td>
+                        <td>{{$item['cariculam']['name']}}</td>
                         <td>{{$item->department_name}}</td>
                         <td>{{$item->department_code}}</td>
                         <td>

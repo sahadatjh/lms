@@ -43,7 +43,9 @@
                             <label for="cariculam_id">Cariculam Name *</label>
                             <select name="cariculam_id" id="cariculam_id" class="select2 @error('cariculam_id') is-invalid @enderror" autofocus>
                                 <option value="">Please Select*</option>
-                                <option value="1">Diploma-in-Engineering</option>
+                                @foreach ($cariculams as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-lg-6 col-12 form-group">

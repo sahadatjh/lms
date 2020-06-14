@@ -85,6 +85,7 @@ Route::prefix('publication')->group(function(){
 Route::prefix('book')->group(function(){    
     Route::get('/index', 'Backend\BookController@index')->name('book.index');
     Route::get('/create', 'Backend\BookController@create')->name('book.create');
+    Route::get('/show/{id}', 'Backend\BookController@show')->name('book.show');
     Route::post('/store', 'Backend\BookController@store')->name('book.store');
     Route::get('/edit/{id}', 'Backend\BookController@edit')->name('book.edit');
     Route::post('/update/{id}', 'Backend\BookController@update')->name('book.update');

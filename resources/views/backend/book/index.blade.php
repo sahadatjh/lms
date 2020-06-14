@@ -33,9 +33,13 @@
                                 <label class="form-check-label">Sl No</label>
                             </div>
                         </th>
-                        <th>Subject Name</th>
                         <th>code</th>
+                        <th>Subject Name</th>
                         <th>Writer</th>
+                        <th>Publications</th>
+                        <th>Cariculams</th>
+                        <th>Departments</th>
+                        <th>Semesters</th>
                         <th>Credit</th>
                         <th>Price(printed)</th>
                         <th>Activation Status</th>
@@ -51,9 +55,13 @@
                                 <label class="form-check-label">{{$key+1}}</label>
                             </div>
                         </td>
-                        <td>{{$item->name}}</td>
                         <td>{{$item->code}}</td>
+                        <td>{{$item->name}}</td>
                         <td>{{$item->author_id}}</td>
+                        <td>{{$item->publication_id}}</td>
+                        <td>{{$item->cariculam_id}}</td>
+                        <td>{{$item->department_id}}</td>
+                        <td>{{$item->semester_id}}</td>
                         <td>{{$item->credit}}</td>
                         <td>{{$item->printed_price}}</td>
                         <td>

@@ -32,6 +32,7 @@ class CreateBooksTable extends Migration
             $table->integer('pf')->nullable();
             $table->float('printed_price');
             $table->float('purchase_price')->nullable();
+            $table->tinyInteger('activation_status')->default('1');
             $table->tinyInteger('created_by')->nullable();
             $table->tinyInteger('updated_by')->nullable();
             $table->timestamps();

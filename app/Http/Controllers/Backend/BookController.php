@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Book;
+use App\Model\Cariculam;
+use App\Model\Author;
+use App\Model\Publication;
+use App\Model\Department;
+use App\Model\Semester;
 
 class BookController extends Controller
 {
@@ -25,8 +30,13 @@ class BookController extends Controller
      */
     public function index()
     {
-        $book=Book::all();
-        return view('backend.book.index',['books'=>$book]);
+        $data=array();
+        $data['books']=Book::all();
+        $data['cariculams']=Cariculam::where('activation_status',1)->get();
+        $data['authors']=Author::where('activation_status',1)->get();
+        $data['publications']=Publication::where('activation_status',1)->get();
+        $data['departments']=Department::where('activation_status',1)->get();
+        return view('backend.book.index',$data);
     }
 
     /**
@@ -36,7 +46,14 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('backend.book.create');
+        $data=array();
+        $data['books']=Book::all();
+        $data['cariculams']=Cariculam::where('activation_status',1)->get();
+        $data['authors']=Author::where('activation_status',1)->get();
+        $data['publications']=Publication::where('activation_status',1)->get();
+        $data['departments']=Department::where('activation_status',1)->get();
+        $data['semesters']=Semester::where('activation_status',1)->get();
+        return view('backend.book.create',$data);
     }
 
     /**
@@ -47,7 +64,42 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+	        'code' => 'required|numeric|unique:books',
+	        'name' => 'required|string|unique:books|max:200|min:4',
+	        'author_id' => 'required|numeric',
+	        'publication_id' => 'required|numeric',
+	        'cariculam_id' => 'required|numeric',
+	        'publication_id' => 'required|numeric',
+	        'printed_price' => 'required|numeric',
+        ]);
+// dd($request);
+        $book = new Book;
+        $book->code = $request->code;
+        $book->name = $request->name;
+        $book->author_id = $request->author_id;
+        $book->publication_id = $request->publication_id;
+        $book->cariculam_id = $request->cariculam_id;
+        $book->department_id = $request->department_id;
+        $book->semester_id = $request->semester_id;
+        $book->probidhan = $request->probidhan;
+        $book->theory = $request->theory;
+        $book->practical = $request->practical;
+        $book->credit = $request->credit;
+        $book->tc = $request->tc;
+        $book->tf = $request->tf;
+        $book->pc = $request->pc;
+        $book->pf = $request->pf;
+        $book->printed_price = $request->printed_price;
+        $book->purchase_price = $request->purchase_price;
+        $book->activation_status = $request->activation_status;
+        $book->created_by = Auth::user()->id;
+        $saved= $book->save();
+        if ($saved) {
+            return redirect()->route('book.index')->with('success','data inserted successfully!');
+        } else {
+            return redirect()->route('book.index')->with('error','Error!!! Please Check???');
+        }
     }
 
     /**
@@ -69,7 +121,14 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=array();
+        $data['book']=Book::find($id);
+        $data['cariculams']=Cariculam::where('activation_status',1)->get();
+        $data['authors']=Author::where('activation_status',1)->get();
+        $data['publications']=Publication::where('activation_status',1)->get();
+        $data['departments']=Department::where('activation_status',1)->get();
+        $data['semesters']=Semester::where('activation_status',1)->get();
+        return view('backend.book.edit',$data);
     }
 
     /**
@@ -81,7 +140,42 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+	        'code' => 'required|numeric',
+	        'name' => 'required|string|max:200',
+	        'author_id' => 'required|numeric',
+	        'publication_id' => 'required|numeric',
+	        'cariculam_id' => 'required|numeric',
+	        'publication_id' => 'required|numeric',
+	        'printed_price' => 'required|numeric',
+        ]);
+// dd($request);
+        $book = Book::find($id);
+        $book->code = $request->code;
+        $book->name = $request->name;
+        $book->author_id = $request->author_id;
+        $book->publication_id = $request->publication_id;
+        $book->cariculam_id = $request->cariculam_id;
+        $book->department_id = $request->department_id;
+        $book->semester_id = $request->semester_id;
+        $book->probidhan = $request->probidhan;
+        $book->theory = $request->theory;
+        $book->practical = $request->practical;
+        $book->credit = $request->credit;
+        $book->tc = $request->tc;
+        $book->tf = $request->tf;
+        $book->pc = $request->pc;
+        $book->pf = $request->pf;
+        $book->printed_price = $request->printed_price;
+        $book->purchase_price = $request->purchase_price;
+        $book->activation_status = $request->activation_status;
+        $book->updated_by = Auth::user()->id;
+        $saved= $book->save();
+        if ($saved) {
+            return redirect()->route('book.index')->with('success','data updaded successfully!');
+        } else {
+            return redirect()->route('book.index')->with('error','Error!!! Please Check???');
+        }
     }
 
     /**
@@ -92,6 +186,12 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book=Book::find($id);
+        $deleted=$book->delete();
+        if ($deleted) {
+            return redirect()->route('book.index')->with('success','data deleted successfully!');
+        } else {
+            return redirect()->route('book.index')->with('error','Error!!! Please Check???');
+        }
     }
 }

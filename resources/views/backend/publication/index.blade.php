@@ -55,7 +55,7 @@
                             @if ($item->logo)
                                 <img src="{{asset($item->logo)}}" alt="Avatar" style="height: 35px; width: 35px; border-radius:50px;">
                             @else
-                                {{-- <img src="{{asset('public/assets/backend')}}/img/figure/student2.png" alt="student"> --}}
+                               -----
                             @endif
                         </td>
                         <td>{{$item->publication_name}}</td>
