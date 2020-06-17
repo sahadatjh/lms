@@ -26,10 +26,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $data=array();
-        $data['cariculams']=Cariculam::all();
-        $data['departments']=Department::all();
-        return view('backend.department.index',$data);
+        $departments=Department::all();
+        return view('backend.department.index',['departments'=>$departments]);
     }
 
     /**

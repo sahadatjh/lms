@@ -17,8 +17,8 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('name')->unique();
-            $table->tinyInteger('author_id');
-            $table->tinyInteger('publication_id');
+            $table->tinyInteger('author_id')->nullable();
+            $table->tinyInteger('publication_id')->nullable();
             $table->tinyInteger('cariculam_id')->nullable();
             $table->tinyInteger('department_id')->nullable();
             $table->tinyInteger('semester_id')->nullable();
@@ -30,7 +30,7 @@ class CreateBooksTable extends Migration
             $table->integer('tf')->nullable();
             $table->integer('pc')->nullable();
             $table->integer('pf')->nullable();
-            $table->float('printed_price');
+            $table->float('printed_price')->nullable();
             $table->float('purchase_price')->nullable();
             $table->tinyInteger('activation_status')->default('1');
             $table->tinyInteger('created_by')->nullable();

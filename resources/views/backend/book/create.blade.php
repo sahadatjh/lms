@@ -40,57 +40,57 @@
                     @endif
                     <div class="row">
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="name">Book Name *</label>
-                            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name') }}"placeholder="Ex. Sahadat Hossain"  autocomplete="name" autofocus>
+                            <label for="name">Book Name </label>
+                            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name') }}"placeholder="Ex. Programming Essentials" required="required" autocomplete="name" autofocus>
                         </div> 
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="author_id">Author *</label>
+                            <label for="author_id">Author </label>
                             <select name="author_id" id="author_id" class="select2 @error('author_id') is-invalid @enderror">
-                                <option value="">Please Select*</option>
+                                <option value="">Please Select</option>
                                 @foreach ($authors as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="publication_id">Publication*</label>
+                            <label for="publication_id">Publication</label>
                             <select name="publication_id" id="publication_id" class="select2 @error('publication_id') is-invalid @enderror">
-                                <option value="">Please Select*</option>
+                                <option value="">Please Select</option>
                                 @foreach ($publications as $item)
                                     <option value="{{$item->id}}">{{$item->publication_name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="cariculam_id">Cariculam*</label>
+                            <label for="cariculam_id">Cariculam</label>
                             <select name="cariculam_id" id="cariculam_id" class="select2 @error('cariculam_id') is-invalid @enderror">
-                                <option value="">Please Select*</option>
+                                <option value="">Please Select</option>
                                 @foreach ($cariculams as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="department_id">Department*</label>
+                            <label for="department_id">Department</label>
                             <select name="department_id" id="department_id" class="select2 @error('department_id') is-invalid @enderror">
-                                <option value="">Please Select*</option>
+                                <option value="">Please Select</option>
                                 @foreach ($departments as $item)
                                     <option value="{{$item->id}}">{{$item->department_name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="semester_id">Semester *</label>
+                            <label for="semester_id">Semester </label>
                             <select name="semester_id" id="semester_id" class="select2 @error('semester_id') is-invalid @enderror">
-                                <option value="">Please Select*</option>
+                                <option value="">Please Select</option>
                                 @foreach ($semesters as $item)
                                     <option value="{{$item->id}}">{{$item->semester_name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-xl-2 col-lg-6 col-12 form-group">
-                            <label for="code">Subject code *</label>
-                            <input type="number" id="code" name="code"  placeholder="Ex. 66631" class="form-control  @error('code') is-invalid @enderror">
+                            <label for="code">Subject code </label>
+                            <input type="number" id="code" name="code"  placeholder="Ex. 66631" class="form-control  @error('code') is-invalid @enderror" required="required">
                         </div>                               
                         <div class="col-xl-2 col-lg-6 col-12 form-group">
                             <label for="probidhan">Probidhan </label>
@@ -133,9 +133,9 @@
                             <input type="number" id="purchase_price" name="purchase_price"  placeholder="Ex. 200" class="form-control  @error('purchase_price') is-invalid @enderror">
                         </div>
                         <div class="col-xl-4 col-lg-6 col-12 form-group">
-                            <label for="activation_status">Activation Status *</label>
-                            <select name="activation_status" id="activation_status" class="select2  @error('activation_status') is-invalid @enderror">
-                                <option value="">Please Select *</option>
+                            <label for="activation_status">Activation Status </label>
+                            <select name="activation_status" id="activation_status" class="select2  @error('activation_status') is-invalid @enderror" required="required">
+                                <option value="">Please Select </option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>

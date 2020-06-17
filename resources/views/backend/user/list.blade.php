@@ -73,7 +73,7 @@
                         </td>
                         <td>
                             <a href="{{route('user.show',$item->id)}}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                            <a href="{{route('user.edit',$item->id)}}" class="btn btn-info"><i class="fas fa-cogs"></i></a>
+                            <a href="{{route('user.edit',$item->id)}}" class="btn btn-info"><i class="fas fa-edit"></i></a>
                             <a href="{{route('user.destroy',$item->id)}}" id="delete"class="btn btn-danger" onclick="return check_delete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>

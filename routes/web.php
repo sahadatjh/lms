@@ -90,13 +90,19 @@ Route::prefix('book')->group(function(){
     Route::get('/edit/{id}', 'Backend\BookController@edit')->name('book.edit');
     Route::post('/update/{id}', 'Backend\BookController@update')->name('book.update');
     Route::get('/destroy/{id}', 'Backend\BookController@destroy')->name('book.destroy');
+    
+    Route::get('/purchase/index', 'Backend\BookPurchaseController@index')->name('purchase.index');
+    Route::get('/purchase/create', 'Backend\BookPurchaseController@create')->name('purchase.create');
+    Route::post('/purchase/store', 'Backend\BookPurchaseController@store')->name('purchase.store');
+    Route::get('/purchase/edit/{id}', 'Backend\BookPurchaseController@edit')->name('purchase.edit');
+    Route::post('/purchase/update/{id}', 'Backend\BookPurchaseController@update')->name('purchase.update');
 });
 Route::prefix('student')->group(function(){
     Route::get('/index', 'Backend\StudentController@index')->name('student.index');
-    // Route::get('/view/{id}', 'Backend\StudentController@view')->name('student.view');
-    // Route::get('/add', 'Backend\StudentController@add')->name('student.add');
-    // Route::post('/store', 'Backend\StudentController@store')->name('student.store');
-    // Route::get('/edit/{id}', 'Backend\StudentController@edit')->name('student.edit');
-    // Route::post('/update', 'Backend\StudentController@update')->name('student.update');
-    // Route::get('/delete/{id}', 'Backend\StudentController@delete')->name('student.delete');
+    Route::get('/show/{id}', 'Backend\StudentController@show')->name('student.show');
+    Route::get('/create', 'Backend\StudentController@create')->name('student.create');
+    Route::post('/store', 'Backend\StudentController@store')->name('student.store');
+    Route::get('/edit/{id}', 'Backend\StudentController@edit')->name('student.edit');
+    Route::post('/update/{id}', 'Backend\StudentController@update')->name('student.update');
+    Route::get('/destroy/{id}', 'Backend\StudentController@destroy')->name('student.destroy');
 });

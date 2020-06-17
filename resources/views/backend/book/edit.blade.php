@@ -137,7 +137,7 @@
                             <select name="activation_status" id="activation_status" class="select2  @error('activation_status') is-invalid @enderror">
                                 <option value="">Please Select *</option>
                                 <option value="1" {{(1==$book->activation_status)?'selected':''}}>Active</option>
-                                <option value="0" {{(1==$book->activation_status)?'selected':''}}>Inactive</option>
+                                <option value="0" {{(0==$book->activation_status)?'selected':''}}>Inactive</option>
                             </select>
                         </div>
                         <div class="col-12 form-group mg-t-8">

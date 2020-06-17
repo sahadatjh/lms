@@ -2,12 +2,12 @@
 @section('content')
 <!-- Breadcubs Area Start Here -->
 <div class="breadcrumbs-area">
-    {{-- <h3>Users</h3> --}}
+    {{-- <h3>Books</h3> --}}
     <ul>
         <li>
             <a href="{{route('dashboard')}}">Home</a>
         </li>
-        <li>User Details</li>
+        <li>Book Details</li>
     </ul>
 </div>
 <!-- Breadcubs Area End Here -->
@@ -18,73 +18,96 @@
             <div class="card-body">
                 <div class="heading-layout1">
                     <div class="item-title">
-                        <h3>User Details</h3>
+                        <h3>Subject Details</h3>
                     </div>
                     <div class="pull-right">
-                        <a href="{{route('user.index')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel">All User</button></a>
+                        <a href="{{route('book.index')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel">All Book</button></a>
                     </div>
                 </div>
                 <hr><hr>
                 <div class="user-details-box">
-                    <div class="">
-                        @if ($user->image)
-                            <img src="{{asset($user->image)}}" alt="user" style="height: 200px;border: 2px solid #000; padding: 5px">
-                        @endif
-                    </div>
                     <div class="item-content">
                         <div class="info-table table-responsive">
                             <table class="table text-nowrap">
                                 <tbody><tr>
-                                    <td>User Level:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->usertype}}</td>
+                                    <td>Subject Name:</td>
+                                        <td class="font-medium text-dark-medium">{{$book->name}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->name}}</td>
+                                        <td>Subject Code:</td>
+                                        <td class="font-medium text-dark-medium">{{$book->code}}</td>
+                                    </tr>
+                                    {{-- <tr>
+                                        <td>Writer/Author:</td>
+                                        <td class="font-medium text-dark-medium">{{$book['authors']['name']}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Designation:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->designation_id}}</td>
+                                        <td>Cariculam:</td>
+                                        <td class="font-medium text-dark-medium">{{$book['cariculams']['name']}}</td>
                                     </tr>
                                     <tr>
-                                        <td>E-mail:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->email}}</td>
+                                        <td>Department:</td>
+                                        <td class="font-medium text-dark-medium">{{$book['departments']['department_name']}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Phone:</td>
-                                        <td class="font-medium text-dark-medium">+88{{$user->phone}}</td>
+                                        <td>Semester:</td>
+                                        <td class="font-medium text-dark-medium">{{$book['semesters']['semester_name']}}</td>
+                                    </tr> --}}
+                                    <tr>
+                                        <td>Probidhan:</td>
+                                        <td class="font-medium text-dark-medium">{{$book->probidhan}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Address:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->address}}</td>
+                                        <td>Theory(T):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->theory}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Gender:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->gender}}</td>
+                                        <td>Practical(P):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->practical}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Joining Date:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->joining_date}}</td>
+                                        <td>Credit(C):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->credit}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Date Of Birth:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->dob}}</td>
+                                        <td>TC(Theory Continuous):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->tc}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Religion:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->religion}}</td>
+                                        <td>TF(Practical Final):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->tf}}</td>
                                     </tr>
                                     <tr>
-                                        <td>NID No:</td>
-                                        <td class="font-medium text-dark-medium">{{$user->nid}}</td>
+                                        <td>PC(Practical Continuous):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->pc}}</td>
                                     </tr>
+                                    <tr>
+                                        <td>TC(Practical Final):</td>
+                                        <td class="font-medium text-dark-medium">{{$book->pf}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Printed Price:</td>
+                                        <td class="font-medium text-dark-medium">{{$book->printed_price}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Purchase Price:</td>
+                                        <td class="font-medium text-dark-medium">{{$book->purchase_price}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Created By:</td>
+                                        <td class="font-medium text-dark-medium">{{$book['createdUser']['name']}}</td>
+                                    </tr>
+                                    {{-- <tr>
+                                        <td>Udated By:</td>
+                                        <td class="font-medium text-dark-medium">{{$book['updatedUser']['name']}}</td>
+                                    </tr> --}}
                                     <tr>
                                         <td>Activation Status:</td>
                                         <td class="font-medium text-dark-medium">
-                                            @if ($user->activation_status==1)
-                                                {{_('Active User')}}
-                                            @elseif($user->activation_status==0)
-                                             {{_('Inactive User')}}
+                                            @if ($book->activation_status==1)
+                                                {{_('Active Book')}}
+                                            @elseif($book->activation_status==0)
+                                             {{_('Inactive Book')}}
                                             @endif
                                         </td>
                                     </tr>

@@ -70,7 +70,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('publication.edit',$item->id)}}" class="btn btn-info" title="Edit"><i class="fas fa-cogs"></i></a>
+                            <a href="{{route('publication.edit',$item->id)}}" class="btn btn-info" title="Edit"><i class="fas fa-edit"></i></a>
                             <a href="{{route('publication.destroy',$item->id)}}" id="delete"class="btn btn-danger" onclick="return check_delete();"title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>

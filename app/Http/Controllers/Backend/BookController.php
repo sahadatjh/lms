@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Model\User;
 use App\Model\Book;
 use App\Model\Cariculam;
 use App\Model\Author;
@@ -32,10 +33,6 @@ class BookController extends Controller
     {
         $data=array();
         $data['books']=Book::all();
-        $data['cariculams']=Cariculam::where('activation_status',1)->get();
-        $data['authors']=Author::where('activation_status',1)->get();
-        $data['publications']=Publication::where('activation_status',1)->get();
-        $data['departments']=Department::where('activation_status',1)->get();
         return view('backend.book.index',$data);
     }
 
@@ -67,11 +64,10 @@ class BookController extends Controller
         $request->validate([
 	        'code' => 'required|numeric|unique:books',
 	        'name' => 'required|string|unique:books|max:200|min:4',
-	        'author_id' => 'required|numeric',
-	        'publication_id' => 'required|numeric',
-	        'cariculam_id' => 'required|numeric',
-	        'publication_id' => 'required|numeric',
-	        'printed_price' => 'required|numeric',
+	        // 'author_id' => 'required|numeric',
+	        // 'publication_id' => 'required|numeric',
+	        // 'cariculam_id' => 'required|numeric',
+	        // 'printed_price' => 'required|numeric',
         ]);
 // dd($request);
         $book = new Book;
@@ -110,7 +106,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book=Book::find($id);
+        return view('backend.book.show',['book'=>$book]);   
     }
 
     /**
@@ -143,11 +140,11 @@ class BookController extends Controller
         $request->validate([
 	        'code' => 'required|numeric',
 	        'name' => 'required|string|max:200',
-	        'author_id' => 'required|numeric',
-	        'publication_id' => 'required|numeric',
-	        'cariculam_id' => 'required|numeric',
-	        'publication_id' => 'required|numeric',
-	        'printed_price' => 'required|numeric',
+	        // 'author_id' => 'required|numeric',
+	        // 'publication_id' => 'required|numeric',
+	        // 'cariculam_id' => 'required|numeric',
+	        // 'publication_id' => 'required|numeric',
+	        // 'printed_price' => 'required|numeric',
         ]);
 // dd($request);
         $book = Book::find($id);

@@ -11,7 +11,7 @@
         <ul class="nav nav-sidebar-menu sidebar-toggle-view">
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
-                <ul class="nav sub-group-menu {{($prefix=='/dashboard')?'sub-group-active':''}} ">
+                <ul class="nav sub-group-menu {{($route=='dashboard')?'sub-group-active':''}} ">
                     <li class="nav-item">
                         <a href="{{route('dashboard')}}" class="nav-link {{($route=='dashboard')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Admin</a>
                     </li>
@@ -27,7 +27,7 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Cariculam</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Cariculam</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/cariculam')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('cariculam.index')}}" class="nav-link {{($route=='cariculam.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Cariculam</a>
@@ -38,7 +38,7 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Department</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Department</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/department')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('department.index')}}" class="nav-link {{($route=='department.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All department</a>
@@ -49,7 +49,7 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Semester</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Semester</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/semester')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('semester.index')}}" class="nav-link {{($route=='semester.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All semester</a>
@@ -60,7 +60,7 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Session</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Session</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/session')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('session.index')}}" class="nav-link {{($route=='session.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All session</a>
@@ -71,7 +71,21 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Author</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
+                <ul class="nav sub-group-menu">
+                    <li class="nav-item">
+                        <a href="{{route('student.index')}}" class="nav-link"><i class="fas fa-angle-right"></i>All Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('student.create')}}" class="nav-link"><i class="fas fa-angle-right"></i>Admission Form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="fas fa-angle-right"></i>Student Promotion</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item sidebar-nav-item">
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Author</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/author')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('author.index')}}" class="nav-link {{($route=='author.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All author</a>
@@ -82,7 +96,7 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Manage Publication</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Publication</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/publication')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('publication.index')}}" class="nav-link {{($route=='publication.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Publication</a>
@@ -96,15 +110,21 @@
                 <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Library</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/book')?'sub-group-active':''}}">
                     <li class="nav-item">
-                        <a href="{{route('book.index')}}" class="nav-link {{($route=='book.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Book</a>
+                        <a href="{{route('book.index')}}" class="nav-link {{($route=='book.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Subject</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('book.create')}}" class="nav-link {{($route=='book.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Book</a>
+                        <a href="{{route('book.create')}}" class="nav-link {{($route=='book.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Add New Subject</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('purchase.create')}}" class="nav-link {{($route=='purchase.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Purchase New Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('purchase.index')}}" class="nav-link {{($route=='purchase.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Book in Stock</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Users Management</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Users</span></a>
                 <ul class="nav sub-group-menu {{($prefix=='/user')?'sub-group-active':''}}">
                     <li class="nav-item">
                         <a href="{{route('user.index')}}" class="nav-link {{($route=='user.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All User</a>
@@ -118,44 +138,19 @@
                 </ul>
             </li>
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
-                <ul class="nav sub-group-menu">
-                    <li class="nav-item">
-                        <a href="{{route('student.index')}}" class="nav-link"><i class="fas fa-angle-right"></i>All
-                            Students</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="student-details.html" class="nav-link"><i
-                                class="fas fa-angle-right"></i>Student Details</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="admit-form.html" class="nav-link"><i
-                                class="fas fa-angle-right"></i>Admission Form</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="student-promotion.html" class="nav-link"><i
-                                class="fas fa-angle-right"></i>Student Promotion</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-multiple-users-silhouette"></i><span>Teachers</span></a>
                 <ul class="nav sub-group-menu">
                     <li class="nav-item">
-                        <a href="all-teacher.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                            Teachers</a>
+                        <a href="all-teacher.html" class="nav-link"><i class="fas fa-angle-right"></i>All Teachers</a>
                     </li>
                     <li class="nav-item">
-                        <a href="teacher-details.html" class="nav-link"><i
-                                class="fas fa-angle-right"></i>Teacher Details</a>
+                        <a href="teacher-details.html" class="nav-link"><i class="fas fa-angle-right"></i>Teacher Details</a>
                     </li>
                     <li class="nav-item">
-                        <a href="add-teacher.html" class="nav-link"><i class="fas fa-angle-right"></i>Add
-                            Teacher</a>
+                        <a href="add-teacher.html" class="nav-link"><i class="fas fa-angle-right"></i>Add Teacher</a>
                     </li>
                     <li class="nav-item">
-                        <a href="teacher-payment.html" class="nav-link"><i
-                                class="fas fa-angle-right"></i>Payment</a>
+                        <a href="teacher-payment.html" class="nav-link"><i class="fas fa-angle-right"></i>Payment</a>
                     </li>
                 </ul>
             </li>
