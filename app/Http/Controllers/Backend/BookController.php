@@ -12,6 +12,7 @@ use App\Model\Author;
 use App\Model\Publication;
 use App\Model\Department;
 use App\Model\Semester;
+use App\Model\Student;
 
 class BookController extends Controller
 {
@@ -190,5 +191,10 @@ class BookController extends Controller
         } else {
             return redirect()->route('book.index')->with('error','Error!!! Please Check???');
         }
+    }
+
+    public function distribution(){
+        $student=Student::find(2);
+        return view('backend.book.distribution',['student'=>$student]);
     }
 }

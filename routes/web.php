@@ -91,11 +91,13 @@ Route::prefix('book')->group(function(){
     Route::post('/update/{id}', 'Backend\BookController@update')->name('book.update');
     Route::get('/destroy/{id}', 'Backend\BookController@destroy')->name('book.destroy');
     
-    Route::get('/purchase/index', 'Backend\BookPurchaseController@index')->name('purchase.index');
-    Route::get('/purchase/create', 'Backend\BookPurchaseController@create')->name('purchase.create');
-    Route::post('/purchase/store', 'Backend\BookPurchaseController@store')->name('purchase.store');
-    Route::get('/purchase/edit/{id}', 'Backend\BookPurchaseController@edit')->name('purchase.edit');
-    Route::post('/purchase/update/{id}', 'Backend\BookPurchaseController@update')->name('purchase.update');
+    Route::get('/purchase/index', 'Backend\PurchaseController@index')->name('purchase.index');
+    Route::get('/purchase/create', 'Backend\PurchaseController@create')->name('purchase.create');
+    Route::post('/purchase/store', 'Backend\PurchaseController@store')->name('purchase.store');
+    Route::get('/purchase/edit/{id}', 'Backend\PurchaseController@edit')->name('purchase.edit');
+    Route::post('/purchase/update/{id}', 'Backend\PurchaseController@update')->name('purchase.update');
+
+    Route::get('/distribution', 'Backend\BookController@distribution')->name('book.distribution');
 });
 Route::prefix('student')->group(function(){
     Route::get('/index', 'Backend\StudentController@index')->name('student.index');
