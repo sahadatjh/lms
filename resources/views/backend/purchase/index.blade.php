@@ -7,7 +7,7 @@
         <li>
             <a href="{{route('dashboard')}}">Home</a>
         </li>
-        <li>All Purchase</li>
+        <li>All Bills</li>
     </ul>
 </div>
 <!-- Breadcubs Area End Here -->
@@ -16,7 +16,7 @@
     <div class="card-body">
         <div class="heading-layout1">
             <div class="item-title">
-                <h3>All Invoices</h3>
+                <h3>All Bills</h3>
             </div>
             <div class="pull-right">
                 <a href="{{route('purchase.create')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel"> Add New</button></a>

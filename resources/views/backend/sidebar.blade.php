@@ -119,7 +119,7 @@
                         <a href="{{route('purchase.create')}}" class="nav-link {{($route=='purchase.create')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Purchase New Book</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('purchase.index')}}" class="nav-link {{($route=='purchase.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Invoice List</a>
+                        <a href="{{route('purchase.index')}}" class="nav-link {{($route=='purchase.index')?'menu-active':''}}"><i class="fas fa-angle-right"></i>All Bills</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('book.distribution')}}" class="nav-link {{($route=='book.distribution')?'menu-active':''}}"><i class="fas fa-angle-right"></i>Book Distribution</a>

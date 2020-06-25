@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="heading-layout1">
                     <div class="item-title">
-                        <h3>All Students Data</h3>
+                        <h3>Student Admission Form</h3>
                     </div>
                     <div class="pull-right">
                         <a href="{{route('student.index')}}"><button class="btn-fill-lg font-normal text-light gradient-orange-peel">All Student</button></a>

@@ -82,7 +82,7 @@
         searching: true,
         info: true,
         lengthChange: true,
-        lengthMenu: [5, 10, 20, 50, 100],
+        lengthMenu: [10, 20, 50, 100],
         columnDefs: [{
           targets: [0, -1], // column or columns numbers
           orderable: true // set orderable for selected columns
@@ -124,7 +124,7 @@
           monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
           today: 'Today',
           clear: 'Clear',
-          dateFormat: 'dd/mm/yyyy',
+          dateFormat: 'yyyy-mm-dd',
           firstDay: 0
         }
       });

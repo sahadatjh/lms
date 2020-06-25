@@ -35,7 +35,7 @@
                         </th>
                         <th>Author Name</th>
                         <th>Comments</th>
-                        <th>Activation Status</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>

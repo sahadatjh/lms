@@ -47,7 +47,7 @@
                             <label for="activation_status">Activation Status *</label>
                             <select name="activation_status" id="activation_status" class="select2  @error('activation_status') is-invalid @enderror">
                                 <option value="">Please Select *</option>
-                                <option value="1">Active</option>
+                                <option value="1" selected>Active</option>
                                 <option value="0">Inactive</option>
                             </select>
                         </div>
